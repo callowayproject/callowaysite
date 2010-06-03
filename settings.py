@@ -54,17 +54,10 @@ CACHE_BACKEND = 'versionedcache.backend://localhost:11211/'
 INSTALLED_APPS = APPS_CORE + \
     APPS_ADMIN + \
     APPS_STAFF + \
-    APPS_REVERSION + \
-    APPS_STORIES + \
     APPS_CALLOWAY_DEFAULT + \
-    APPS_MPTT + \
-    APPS_CATEGORIES + \
-    APPS_COMMENT_UTILS + \
-    APPS_FRONTEND_ADMIN + \
     APPS_MEDIA + \
     APPS_UTILS + \
-    APPS_REGISTRATION + \
-    APPS_TINYMCE 
+    APPS_REGISTRATION
 
 ADMIN_TOOLS_THEMING_CSS = os.path.join(STATIC_ROOT, 'admin', 'css', 'theming.css')
 
