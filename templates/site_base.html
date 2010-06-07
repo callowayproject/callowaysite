@@ -1,34 +1,21 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load analytics %}
-{% block site_header %}<div id="masthead"><h1 id="logo">Daily Times</h1></div>{% endblock %}
+{% block site_header %}
+	<div class="left full mt mb ml mr">
+		<img src="{{ STATIC_URL }}images/logo-calloway.png" alt="Calloway" />
+	</div>
+{% endblock %}
+
 {% block content_nav %}{% endblock %}
-{% block member_opts %}{% if user.is_authenticated %}
-<p>Hello {{ user.first_name }}!</p>
-<ul class="member_opts">
-	<li><a href="{% url auth_logout %}">Logout</a></li>
-	<li><a href="{% url auth_password_change %}">Change Password</a></li>
-	<li><a href="{% url profiles_edit_profile %}">Edit Profile</a></li>
-	{# <li><a href="{% url profiles_profile_detail %}">View Profile</a></li> #}
-</ul>
-{% else %}
-<p>Hello Guest</p>
-<ul class="member_opts">
-	<li><a href="{% url auth_login %}">Sign In</a></li>
-	<li><a href="{% url registration_register %}">Join</a></li>
-</ul>
-{% endif %}{% endblock %}
+{% block member_opts %}{% endblock %}
 {% block search %}{% endblock %}
 
 {% block footer %}
-<div class="legal">
-    {% trans "&copy; 2010 &lt;your company here&gt;" %}
-    {# - <a href="{% url about %}">{% trans "About" %}</a> #}
-    {# - <a href="{% url terms %}">{% trans "Terms of Service" %}</a> #}
-    {# - <a href="{% url privacy %}">{% trans "Privacy Policy" %}</a> #}
-    {# - <a href="{% url dmca %}">{% trans "DMCA Notice" %}</a> #}
+<div class="full left legal">
+    {% trans "&copy; 2010 Calloway Project" %}
 </div>
 {% endblock %}
 {% block extra_body_base %}
-{% analytics_async %}
+	{% analytics_async %}
 {% endblock %}
