@@ -2,12 +2,24 @@
 {% load i18n %}
 {% load analytics %}
 {% block site_header %}
-	<div class="left full mt mb ml mr">
+	<div class="left full pt pb pl pr">
 		<img src="{{ STATIC_URL }}images/logo-calloway.png" alt="Calloway" />
 	</div>
 {% endblock %}
 
-{% block content_nav %}{% endblock %}
+{% block content_nav %}
+<div class="right full pb pl pr">
+	<ul id="nav">
+		<li><a href="/">Home</a></li>
+		<li><a href="/screenshots/">Screenshots</a></li>
+		<li><a href="/license/">License</a></li>
+		<li><a href="/applications/">Applications</a></li>
+		<li><a href="/code/">Code</a></li>
+		<li><a href="/about/">Core Developers</a></li>
+		<li><a href="/documentation/">Documentation</a></li>
+	</ul>
+</div>
+{% endblock %}
 {% block member_opts %}{% endblock %}
 {% block search %}{% endblock %}
 

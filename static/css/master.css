@@ -20,7 +20,7 @@ em{font-style:oblique;}
 .pagecontainer, .footer{width:960px; margin:0 auto;}
 
 .homepage{background:url('../images/bg-homepage.png') repeat-x left -5px;}
-.interior{background:;}
+.interior{background:url('../images/bg-interior.png') repeat-x left -5px;}
 
 .w620{width:620px;}
 .w300{width:300px;}
@@ -126,3 +126,78 @@ em{font-style:oblique;}
 .grey, .grey a{color:#666;}
 .dgrey,.dgrey a{color:#333;}
 .red, .red a{color:#b83111;}
+
+/* Nav Bar */
+
+a:link, a:visited, a:hover, a:active {
+    border: none; 
+}
+
+ul#nav {
+    opacity: 1;
+    margin: 0;
+    height: 2em;
+    font-size: 1em;
+    margin: 0 auto 2em auto;
+    width: 660px; 
+}
+
+ul#nav li {
+    list-style-type: none;
+    display: block;
+    width: 110px;
+    float: left;
+    text-align: center;
+    font-family: "Lucida Grande", sans-serif;
+    height: 2.5em;
+    border-right: 1px #41768e solid;
+    border-left: 1px #305769 solid;
+    -webkit-box-shadow: .1em .1em .2em #bbb;
+    -moz-box-shadow: 1px 1px 2px #bbb;
+    box-shadow: 2px 2px 2px #bbb;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+ul#nav li a {
+    display: block;
+    padding: .5em .5em .5em .5em;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1em; 
+}
+
+ul#nav li:first-child {
+    -webkit-border-top-left-radius: .5em;
+    -moz-border-radius-topleft: .5em;
+    border-top-left-radius: .5em;
+    -webkit-border-bottom-left-radius: .5em;
+    -moz-border-radius-bottomleft: .5em;
+    border-bottom-left-radius: .5em; 
+}
+
+ul#nav li:last-child {
+    -webkit-border-top-right-radius: .5em;
+    -moz-border-radius-topright: .5em;
+    border-top-right-radius: .5em;
+    -webkit-border-bottom-right-radius: .5em;
+    -moz-border-radius-bottomright: .5em;
+    border-bottom-right-radius: .5em;
+    border-right-style: none 
+}
+
+ul#nav li {
+    background-color: #c9c9c9;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#41768e), to(#305769));
+    background-image: -moz-linear-gradient(top, #41768e, #305769); 
+}
+
+ul#nav li:hover, #header li.current {
+    background-color: #333333;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#46819c), to(#37647b));
+    background-image: -moz-linear-gradient(top, #333333, #4c4c4c, #474747 90%); 
+}
+
+ul#nav li:hover a, #header li.current a {
+    color: #eecbb2;
+}

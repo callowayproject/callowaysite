@@ -17,6 +17,7 @@ hachoir-parser
 django-ban==0.1
 critic==0.1.1
 django-registration==0.8-alpha-1
+django-tinymce==1.5.1beta1
 django-admin-tools==0.2
 feedparser==4.1
 versionedcache==0.1.0dev
@@ -28,6 +29,3 @@ django-native-tags==0.4
 django-tagging==0.3.1
 massmedia==0.5.1
 django-uni-form==0.7
-django-picklefield==0.1
-lxml==2.2.6
-pytidylib

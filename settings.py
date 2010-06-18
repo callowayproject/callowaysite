@@ -7,6 +7,8 @@ import sys
 CALLOWAY_ROOT = os.path.abspath(os.path.dirname(calloway.__file__))
 sys.path.insert(0, os.path.join(CALLOWAY_ROOT, 'apps'))
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
+sys.path.insert(0, os.path.join(PROJECT_ROOT, 'lib'))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -40,8 +42,6 @@ STATIC_URL = '/media/'
 
 AUTH_PROFILE_MODULE = ''
 
-PUBLICATION_NAME = 'The Effington Times'
-
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
@@ -49,7 +49,8 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_ROOT, 'templates'),
 ) + CALLOWAY_TEMPLATE_DIRS
 
-CACHE_BACKEND = 'versionedcache.backend://localhost:11211/'
+#CACHE_BACKEND = 'versionedcache.backend://localhost:11211/'
+CACHE_BACKEND = 'dummy:///'
 
 INSTALLED_APPS = APPS_CORE + \
     APPS_ADMIN + \
@@ -57,22 +58,25 @@ INSTALLED_APPS = APPS_CORE + \
     APPS_CALLOWAY_DEFAULT + \
     APPS_MEDIA + \
     APPS_UTILS + \
-    APPS_REGISTRATION
+    APPS_REGISTRATION + \
+    APPS_TINYMCE
 
-ADMIN_TOOLS_THEMING_CSS = os.path.join(STATIC_ROOT, 'admin', 'css', 'theming.css')
+ADMIN_TOOLS_THEMING_CSS = 'admin/css/theming.css'
 
 TINYMCE_JS_URL = '%sjs/tiny_mce/tiny_mce.js' % STATIC_URL
 
 TINYMCE_JS_ROOT = os.path.join(STATIC_ROOT, 'js/tiny_mce')
 
 STATIC_MEDIA_COPY_PATHS = (
-    {'from': os.path.join(CALLOWAY_ROOT, 'media'), 'to': 'media2'},
-    {'from': 'media', 'to': 'media2'},
+    {'from': os.path.join(CALLOWAY_ROOT, 'media'), 'to': 'media'},
+    {'from': 'static', 'to': 'media'},
 )
 
 STATIC_MEDIA_COMPRESS_CSS = False
 STATIC_MEDIA_COMPRESS_JS = False
-STATIC_MEDIA_APP_MEDIA_PATH = os.path.join(PROJECT_ROOT, 'media2')
+STATIC_MEDIA_APP_MEDIA_PATH = os.path.join(PROJECT_ROOT, 'media')
+
+ADMIN_TOOLS_MENU = 'adminmenu.CustomMenu'
 
 try:
     from local_settings import *
