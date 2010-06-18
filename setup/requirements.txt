@@ -1,12 +1,9 @@
 --extra-index-url=http://opensource.washingtontimes.com/pypi/simple
 
-django>=1.1.1
+django==1.2.1
 simplejson==2.0.9
-python-memcached==1.44
-django-memcached==0.1.2
-django-pagination==1.0.5
-django-debug-toolbar==0.7.0
-django-extensions==0.4.1
 python-dateutil==1.4.1
 
-calloway==0.1.6
+#calloway==0.1.10
+
+-r calloway_reqs.txt
