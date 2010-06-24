@@ -1,0 +1,37 @@
+{% extends "site_base.html" %}
+
+{% block body_class %}interior{% endblock %}
+
+{% block head_title %}{{ flatpage.title }}{% endblock %}
+
+{% block extra_head %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script src="/media/galleria/galleria.js"></script>
+<script src="/media/galleria/galleria.classic.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#gallery').galleria({debug:true});
+});
+</script>
+{% endblock %}
+
+{% block body %}
+<div id="gallery" style="width: 500px; height: 500px;">
+    <img  alt="My description" title="My title" src="/media/images/screenshots/dashboard.png"/>
+    <img alt="My description" title="My title" src="/media/images/screenshots/position_searching.png"/>
+    <img alt="My description" title="My title" src="/media/images/screenshots/storylist_postql.png"/>
+    <img alt="My description" title="My title" src="/media/images/screenshots/Story relations.png"/>
+    <img alt="My description" title="My title" src="/media/images/screenshots/image_list.png"/>
+    <img alt="My description" title="My title" src="/media/images/screenshots/positions_selected.png"/>
+    <img alt="My description" title="My title" src="/media/images/screenshots/tinymce.png"/>
+    <img alt="My description" title="My title" src="/media/images/screenshots/adminmenu.png"/>
+    <img alt="My description" title="My title" src="/media/images/screenshots/image_list2.png"/>
+    <img alt="My description" title="My title" src="/media/images/screenshots/story relations in action 1.png"/>
+    <img alt="My description" title="My title" src="/media/images/screenshots/blog view.png"/>
+    <img alt="My description" title="My title" src="/media/images/screenshots/offensivecontentlist.png"/>
+    <img alt="My description" title="My title" src="/media/images/screenshots/story relations in action 2.png"/>
+    <img alt="My description" title="My title" src="/media/images/screenshots/dashboard-w-custom.png"/>
+    <img alt="My description" title="My title" src="/media/images/screenshots/position_reordering.png"/>
+    <img alt="My description" title="My title" src="/media/images/screenshots/storylist_beforeql.png"/>
+</div>
+{% endblock %}
