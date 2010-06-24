@@ -4,8 +4,8 @@
 		ServerAlias media-callowaysite
 		DocumentRoot /var/code/callowaysite/media
 
-		WSGIDaemonProcess callowaysite user=webdev group=webdev processes=3 threads=1 maximum-requests=1000 python-path=/home/webdev/.virtualenvs/callowaysite/lib/python2.5/site-packages
-		WSGIProcessGroup callowaysite
+		# WSGIDaemonProcess callowaysite user=webdev group=webdev processes=3 threads=1 maximum-requests=1000 python-path=/home/webdev/.virtualenvs/callowaysite/lib/python2.5/site-packages
+		# WSGIProcessGroup callowaysite
 		WSGIScriptAlias / /var/code/callowaysite/conf/callowaysite.wsgi
 		
 		Alias /media /var/code/callowaysite/media
