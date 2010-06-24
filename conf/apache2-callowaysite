@@ -2,6 +2,7 @@
 		ServerAdmin webmaster@washingtontimes.com
 		ServerName callowaysite
 		ServerAlias media-callowaysite
+		ServerAlias www.callowayproject.com
 		DocumentRoot /var/code/callowaysite/media
 
 		# WSGIDaemonProcess callowaysite user=webdev group=webdev processes=3 threads=1 maximum-requests=1000 python-path=/home/webdev/.virtualenvs/callowaysite/lib/python2.5/site-packages
