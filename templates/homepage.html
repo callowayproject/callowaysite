@@ -6,27 +6,65 @@
 
 {% block body %}
 	<div class="left full mt mb">
-		<div class="left pl pt pb max w620 h300">
+		<div class="left pl pt pb max w620 h250">
 			<h1 class="red mt mb">A builder of boring website stuff for opinionated developers.</h1>
-			<p>Calloway was dreamed up to be a fast way to get a web site going. Most web sites have an infrastructure that is painful to recreate each time. Our goal is to allow programmers to specify the functionality they want included, and then focus on the parts that make their website unique.</p>
-			<p>&nbsp;</p>
-			<p>The underlying framework upon which Calloway resides is Django. It is written in Python and promotes adding functionality in "Applications" that can be reused in other projects. This isolation of functionality is what Calloway uses to combine other open source projects together to create a cohesive infrastructure.</p>
+			<p>
+				As professional web developers, we&rsquo;ve noticed two realities:
+				<ol>
+				<li>Most web sites are made up of &ldquo;boring stuff&rdquo; 
+				(<abbr title="also known as">AKA</abbr> infrastructure)</li>
+				<li>Web teams <strike>are opinionated bastards</strike> have their own 
+					ways of doing things</li>
+				</ol>
+			</p>
+			<p>
+				Calloway was dreamed up to be a fast way to get a web site going. 
+				It creates the infrastructure for a new web site without forcing
+				you to its &ldquo;what I think is best&rdquo; practices. Our goal is to 
+				allow you to specify the functionality you want included, 
+				in they way you want to work so you can focus on the parts 
+				that make your website unique.
+			</p>
 		</div>
-		<div class="right pr pt pb max w300 h300">
-			<p class="nomar ca mt max"><img src="{{ STATIC_URL }}images/btn-getstarted.png" width="254" height="69" alt="Get Started" class="mt max" /></p>
-			<p class="nomar ca">or <a href="#">learn more</a></p>
+		<div class="right pr pt pb max w300 h250">
+			<p class="nomar ca mt max"><img src="{{ STATIC_URL }}images/devpreview.png" width="235" height="113" alt="Developer Preview" class="mt max" /></p>
 		</div>
 	</div>
 	<div class="left full mt mb">
-		<div class="left pl pt pb max w620 h300">
+		<div class="left pl pt pb max w620 h500">
 			<h1 class="red mt mb">What is it?</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>
+				Calloway is a &ldquo;meta&rdquo; framework. It is a small 
+				<a href="http://www.djangoproject.com/" title="Django Project">Django</a> 
+				application coupled with a Django project starter. <a href="/applications/">Third-party
+				applications</a> are bundled together with dependencies to make adding
+				specific functionality easy.
+			</p>
+			<p>
+				Developer&rsquo;s (or even designer&rsquo;s) will use Calloway at the start of a project
+				to get it going so they can work on the fun stuff.
+			</p>
+			
 			<h1 class="red mt mb">What does it do?</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>
+				<ol><li>Starts projects from a given project template</li>
+					<li>Manages dependencies of applications it knows work well together</li>
+					<li>Provides some good (but easily over-rideable) defaults</li>
+				</ol>
+			</p>
+			<p>
+				In order to do this, there are a couple of small requirements:
+				<ul><li><a href="http://pip.openplans.org/">pip</a> for managing packages</li>
+					<li><a href="http://virtualenv.openplans.org/">virtualenv</a> for isolating environments and avoiding package conflicts</li>
+					<li><a href="http://www.doughellmann.com/projects/virtualenvwrapper/">virtualenvwrapper</a> for adding some cool hooks to virtualenv that make it easier to use</li>
+				</ul>
+			</p>
 		</div>
-		<div class="right pr pt pb max w300 h300">
+		<div class="right pr pt pb max w300 h500">
 			<h1 class="red mt mb">Where do I get it?</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>
+				The simplest place is at <a href="http://github.com/callowayproject">github</a>.
+			</p>
 		</div>
 	</div>
 {% endblock %}
