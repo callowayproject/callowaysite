@@ -25,7 +25,9 @@ em{font-style:oblique;}
 .w620{width:620px;}
 .w300{width:300px;}
 
+.h500{height:500px;}
 .h300{height:300px;}
+.h250{height:250px;}
 
 /* global classes - keep at bottom to override */
 .left{float:left;}
@@ -136,7 +138,7 @@ a:link, a:visited, a:hover, a:active {
 ul#nav {
     opacity: 1;
     margin: 0;
-    height: 2em;
+/*    height: 2em;*/
     font-size: 1em;
     margin: 0 auto 2em auto;
 /*    width: 660px; */
@@ -200,4 +202,16 @@ ul#nav li:hover, #header li.current {
 
 ul#nav li:hover a, #header li.current a {
     color: #eecbb2;
+}
+
+ol, ul {
+    padding: 10px 5px;
+}
+
+ol li {
+    list-style: decimal inside;
+}
+
+ul li {
+    list-style: disc inside;
 }
