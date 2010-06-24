@@ -28,8 +28,8 @@
 			FileETag INode MTime Size
 		</Directory>
 		
-		Alias /admin-media /home/webdev/.virtualenvs/callowaysite/lib/python2.5/site-packages/django/contrib/admin/media
-		<Directory /home/webdev/.virtualenvs/callowaysite/lib/python2.5/site-packages/django/contrib/admin/media>
+		Alias /admin-media /home/webdev/.virtualenvs/calloway/lib/python2.5/site-packages/django/contrib/admin/media
+		<Directory /home/webdev/.virtualenvs/calloway/lib/python2.5/site-packages/django/contrib/admin/media>
 			SetHandler None
 		</Directory>
 		
