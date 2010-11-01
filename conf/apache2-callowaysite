@@ -14,7 +14,7 @@
 		WSGIProcessGroup callowaysite
 		WSGIScriptAlias / /var/code/callowaysite/conf/callowaysite.wsgi
 		WSGIPassAuthorization On
-		
+
 		Alias /media /var/code/callowaysite/media
 		<Directory /var/code/callowaysite/media>
 			SetHandler None
@@ -38,5 +38,5 @@
 		<Directory /home/coordt/.virtualenvs/callowaysite/lib/python2.6/site-packages/django/contrib/admin/media>
 			SetHandler None
 		</Directory>
-		
+
 </VirtualHost>
