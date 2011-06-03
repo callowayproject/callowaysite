@@ -1,4 +1,4 @@
---extra-index-url=http://opensource.washingtontimes.com/pypi/simple
+--extra-index-url=http://opensource.washingtontimes.com/simple
 
 django==1.2.1
 simplejson==2.0.9

@@ -1,4 +1,4 @@
---extra-index-url=http://opensource.washingtontimes.com/pypi/simple/
+--extra-index-url=http://opensource.washingtontimes.com/simple/
 IPTCInfo
 hachoir-metadata
 hachoir-core
