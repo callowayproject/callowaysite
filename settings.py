@@ -16,11 +16,11 @@ TEMPLATE_DEBUG = DEBUG
 from calloway.settings import *
 
 ADMINS = (
-    ('coordt', 'webmaster@washingtontimes.com'),
+    ('coordt', 'coreyoordt@gmail.com'),
 )
 MANAGERS = ADMINS
-DEFAULT_FROM_EMAIL='webmaster@washingtontimes.com'
-SERVER_EMAIL='webmaster@washingtontimes.com'
+DEFAULT_FROM_EMAIL='webmaster@callowayproject.com'
+SERVER_EMAIL='webmaster@callowayproject.com'
 
 SECRET_KEY = 'k74n3t@dpe*6aw_wzwukybfem56f7q=bocqdpyy72hflmp-3#n'
 
@@ -59,7 +59,9 @@ INSTALLED_APPS = APPS_CORE + \
     APPS_MEDIA + \
     APPS_UTILS + \
     APPS_REGISTRATION + \
-    APPS_TINYMCE
+    APPS_TINYMCE + (
+        'djangopypi',
+    )
 
 ADMIN_TOOLS_THEMING_CSS = 'admin/css/theming.css'
 
