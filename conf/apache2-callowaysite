@@ -28,9 +28,9 @@
 			AddOutputFilterByType DEFLATE text/html
 			FileETag INode MTime Size
 		</Directory>
-		
-		Alias /admin-media /home/webdev/.virtualenvs/calloway/lib/python2.5/site-packages/django/contrib/admin/media
-		<Directory /home/webdev/.virtualenvs/calloway/lib/python2.5/site-packages/django/contrib/admin/media>
+
+		Alias /admin-media /home/coordt/.virtualenvs/callowaysite/lib/python2.6/site-packages/django/contrib/admin/media
+		<Directory /home/coordt/.virtualenvs/callowaysite/lib/python2.6/site-packages/django/contrib/admin/media>
 			SetHandler None
 		</Directory>
 		
