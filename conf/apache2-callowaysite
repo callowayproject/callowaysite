@@ -6,6 +6,10 @@
 		ServerAlias callowayproject.com
 		DocumentRoot /var/code/callowaysite/media
 
+		RewriteEngine On
+		RewriteCond %{HTTP_HOST} ^www\.(.*)       [NC]
+		RewriteRule (.*) http://%1$1              [R=301,L]
+
 		WSGIDaemonProcess callowaysite user=coordt group=coordt processes=3 threads=1 maximum-requests=1000 python-path=/home/coordt/.virtualenvs/callowaysite/lib/python2.6/site-packages
 		WSGIProcessGroup callowaysite
 		WSGIScriptAlias / /var/code/callowaysite/conf/callowaysite.wsgi
