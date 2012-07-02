@@ -1,0 +1,15 @@
+{% for project in projects %}
+<div class="twelve columns clearfix panel">
+    <img src="http://placehold.it/140x100" class="left thumbnail" width="140" height="100" alt="">
+    <div>
+        <h4>{{ project.name }}</h4>
+        <p>{{ project.description }}</p>
+        {% if project.code_url %}
+            <p class="btn"><a href="{{ project.code_url }}"><i class="icon-github"></i> Code</a></p>
+        {% endif %}
+        {% if project.doc_url %}
+            <p class="btn"><a href="{{ project.doc_url }}"><i class="icon-book"></i> Docs</a></p>
+        {% endif %}
+    </div>
+</div>
+{% endfor %}
