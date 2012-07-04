@@ -1,33 +1,86 @@
-{% extends "base.html" %}
 {% load i18n %}
-{% load analytics %}
-{% block site_header %}
-	<div class="left full pt pb pl pr">
-		<img src="{{ STATIC_URL }}images/logo-calloway.png" alt="Calloway" />
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" itemscope itemtype="http://schema.org/Product"> <!--<![endif]-->
+    <head>
+        <title>{% if SITE_NAME %}{{ SITE_NAME }} : {% endif %}{% block head_title %}{% endblock %}</title>
+
+        <!--Facebook Metadata /-->
+        <meta property="fb:page_id" content="" />
+        <meta property="og:image" content="" />
+        <meta property="og:description" content=""/>
+        <meta property="og:title" content=""/>
+
+        <!--Google+ Metadata /-->
+        <meta itemprop="name" content="">
+        <meta itemprop="description" content="">
+        <meta itemprop="image" content="">
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="humans.txt">
+
+        <!-- Included CSS Files -->
+        <link href="{{ STATIC_URL }}css/font-awesome.css" rel="stylesheet" />
+        <link href="{{ STATIC_URL }}css/font-opensans.css" rel="stylesheet" />
+        <link href="{{ STATIC_URL }}css/styles.css" rel="stylesheet" type="text/css" />
+
+        <!-- IE Fix for HTML5 Tags -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+            <link href="/{{ STATIC_URL}}css/font-awesome-ie7.css" rel="stylesheet" type="text/css" />
+        <![endif]-->
+
+        <script type="text/javascript" src="{{ STATIC_URL }}js/css3-mediaqueries.js"></script>
+        <script src="{{ STATIC_URL }}js/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+
+        {% block extra_head_base %}
+            {% block extra_head %}{% endblock %}
+        {% endblock %}
+    </head>
+
+    <body class="{% block body_class %}{% endblock %}">
+    	<!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+		<div id="header-container" class="dropshad">
+			<header class="full-wrapper clearfix tan dropshad">
+				<h1 id="logo">Calloway Open Source Development</h1>
+				<nav class="headfont wrapper wide-only">
+					<ul class="left">
+						<li><a href="/"><i class="icon-home"></i>Home</a></li>
+						<li><a href="/projects/"><i class="icon-briefcase"></i>Projects</a></li>
+					</ul>
+					<ul class="right">
+						<li><a href="/about/"><i class="icon-user"></i>People</a></li>
+						<li><a href="/blog/"><i class="icon-comment"></i>Blog</a></li>
+					</ul>
+				</nav>
+			</header>
+		</div>
+	<div id="main-container">
+		<div id="main" class="wrapper clearfix">
+			<nav class="headfont not-wide">
+				<ul>
+					<li class="btn"><a href="/"><i class="icon-home"></i>Home</a></li>
+					<li class="btn"><a href="/projects/"><i class="icon-briefcase"></i>Projects</a></li>
+					<li class="btn"><a href="/about/"><i class="icon-user"></i>People</a></li>
+					<li class="btn"><a href="/blog/"><i class="icon-comment"></i>Blog</a></li>
+				</ul>
+			</nav>
+            {% block content %}{% endblock %}
+		</div>
 	</div>
-{% endblock %}
-
-{% block content_nav %}
-<div class="right full pb pl pr">
-	<ul id="nav">
-		<li><a href="/">Home</a></li>
-		<li><a href="/screenshots/">Screenshots</a></li>
-		<li><a href="/license/">License</a></li>
-		<li><a href="/applications/">Applications</a></li>
-		<li><a href="http://github.com/callowayproject/Calloway">Code</a></li>
-		<li><a href="/about/">Core Developers</a></li>
-		<li><a href="http://calloway.readthedocs.org/en/latest/">Documentation</a></li>
-	</ul>
-</div>
-{% endblock %}
-{% block member_opts %}{% endblock %}
-{% block search %}{% endblock %}
-
-{% block footer %}
-<div class="full left legal">
-    {% trans "&copy; 2010 Calloway Project" %}
-</div>
-{% endblock %}
-{% block extra_body_base %}
-	{% analytics_async %}
-{% endblock %}
+	<div id="footer-container">
+		<footer class="wrapper">&copy; {% now "Y" %} Calloway Open Source Development</footer>
+	</div>
+    {% block extra_body_base %}
+        {% block extra_body %}{% endblock %}
+    {% endblock %}
+    </body>
+</html>

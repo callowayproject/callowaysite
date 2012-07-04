@@ -15,7 +15,7 @@ framework.
 """
 import os
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
+os.environ["DJANGO_SETTINGS_MODULE"] = "settings"
 os.environ["CELERY_LOADER"] = "django"
 
 # This application object is used by any WSGI server configured to use this

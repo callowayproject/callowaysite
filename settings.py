@@ -1,44 +1,64 @@
 # Django settings for project project.
 
-import calloway
 import os
 import sys
 
-CALLOWAY_ROOT = os.path.abspath(os.path.dirname(calloway.__file__))
-sys.path.insert(0, os.path.join(CALLOWAY_ROOT, 'apps'))
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
-sys.path.insert(0, os.path.join(PROJECT_ROOT, 'lib'))
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
-
-from calloway.settings import *
 
 ADMINS = (
     ('coordt', 'coreyoordt@gmail.com'),
 )
 MANAGERS = ADMINS
-DEFAULT_FROM_EMAIL='webmaster@callowayproject.com'
-SERVER_EMAIL='webmaster@callowayproject.com'
+DEFAULT_FROM_EMAIL = 'webmaster@callowayproject.com'
+SERVER_EMAIL = 'webmaster@callowayproject.com'
 
-SECRET_KEY = 'k74n3t@dpe*6aw_wzwukybfem56f7q=bocqdpyy72hflmp-3#n'
+SECRET_KEY = ''
 
-DATABASE_ENGINE = 'sqlite3'    # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = 'dev.db'       # Or path to database file if using sqlite3.
-DATABASE_USER = ''             # Not used with sqlite3.
-DATABASE_PASSWORD = ''         # Not used with sqlite3.
-DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'dev.db',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+    }
+}
+
+ROOT_URLCONF = 'urls'
 
 TIME_ZONE = 'America/New_York'
 LANGUAGE_CODE = 'en-us'
 USE_I18N = True
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'media')
-MEDIA_ROOT = os.path.join(STATIC_ROOT, 'uploads')
-MEDIA_URL = '/media/uploads/'
-STATIC_URL = '/media/'
+try:
+    from local_settings import MEDIA_URL_PREFIX
+except ImportError:
+    MEDIA_URL_PREFIX = "/media/"
+try:
+    from local_settings import MEDIA_ROOT_PREFIX
+except ImportError:
+    MEDIA_ROOT_PREFIX = os.path.join(PROJECT_ROOT, 'media')
+try:
+    from local_settings import MEDIA_ROOT
+except ImportError:
+    MEDIA_ROOT = os.path.join(MEDIA_ROOT_PREFIX, 'uploads')
+try:
+    from local_settings import STATIC_ROOT
+except ImportError:
+    STATIC_ROOT = os.path.join(MEDIA_ROOT_PREFIX, 'static')
+
+MEDIA_URL = '%suploads/' % MEDIA_URL_PREFIX
+STATIC_URL = "%sstatic/" % MEDIA_URL_PREFIX
+ADMIN_MEDIA_PREFIX = "%sadmin/" % STATIC_URL
+
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
 
 AUTH_PROFILE_MODULE = ''
 
@@ -47,42 +67,48 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(PROJECT_ROOT, 'templates'),
-) + CALLOWAY_TEMPLATE_DIRS
+)
 
 #CACHE_BACKEND = 'versionedcache.backend://localhost:11211/'
 CACHE_BACKEND = 'dummy:///'
 
-INSTALLED_APPS = APPS_CORE + \
-    APPS_ADMIN + \
-    APPS_STAFF + \
-    APPS_CALLOWAY_DEFAULT + \
-    APPS_MEDIA + \
-    APPS_UTILS + \
-    APPS_REGISTRATION + \
-    APPS_TINYMCE + (
-        'djangopypi',
-    )
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+INSTALLED_APPS = (
+    'admin_tools',
+    'admin_tools.theming',
+    'admin_tools.menu',
+    'admin_tools.dashboard',
+    'django.contrib.auth',
+    'django.contrib.sites',
+    'django.contrib.admin',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'djangopypi',
+    'projects',
+)
 
 ADMIN_TOOLS_THEMING_CSS = 'admin/css/theming.css'
 
-TINYMCE_JS_URL = '%sjs/tiny_mce/tiny_mce.js' % STATIC_URL
-
-TINYMCE_JS_ROOT = os.path.join(STATIC_ROOT, 'js/tiny_mce')
-
-STATIC_MEDIA_COPY_PATHS = (
-    {'from': os.path.join(CALLOWAY_ROOT, 'media'), 'to': 'media'},
-    {'from': 'static', 'to': 'media'},
-)
-
-STATIC_MEDIA_COMPRESS_CSS = False
-STATIC_MEDIA_COMPRESS_JS = False
-STATIC_MEDIA_APP_MEDIA_PATH = os.path.join(PROJECT_ROOT, 'media')
-
 ADMIN_TOOLS_MENU = 'adminmenu.CustomMenu'
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.contrib.messages.context_processors.messages",
+    "django.core.context_processors.request",
+)
+# Python dotted path to the WSGI application used by Django's runserver.
+WSGI_APPLICATION = 'wsgi.application'
 
 try:
     from local_settings import *
 except ImportError:
     pass
-
-VERSION = '0.1'

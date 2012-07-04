@@ -1,9 +1,8 @@
---extra-index-url=http://opensource.washingtontimes.com/simple
-
-django==1.2.1
-simplejson==2.0.9
-python-dateutil==1.4.1
-
-#calloway==0.1.10
-
--r calloway_reqs.txt
+django==1.4
+djangopypi==0.4.4
+django-admin-tools==0.4.1
+django-analytical==0.12.1
+django-extensions==0.9
+django-robots==0.8.1
+pygithub3==0.4.1
+requests==0.13.2

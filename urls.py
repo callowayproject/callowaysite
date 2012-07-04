@@ -1,28 +1,34 @@
 from django.conf.urls.defaults import *
 from django.contrib import admin
-import os
 from django.conf import settings
 
 admin.autodiscover()
 
-handler500 = 'django_ext.views.custom_server_error'
-
-sitemaps = {
-}
+sitemaps = {}
 
 urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
+    (r'^admin_tools/', include('admin_tools.urls')),
+    url(
+        r'^robots.txt$',
+        'robots.views.rules_list',
+        name='robots_rule_list'),
+    url(
+        r'^$',
+        'django.views.generic.simple.direct_to_template',
+        {'template': 'homepage.html'},
+        name='homepage'),
+    url(
+        r'^projects/$',
+        'projects.views.project_list',
+        name='project_list'),
 )
-from calloway.urls import urlpatterns as calloway_patterns
-
-urlpatterns += calloway_patterns
 
 urlpatterns += patterns('',
     url(r'', include('djangopypi.urls'))
 )
 
 if settings.DEBUG:
-    urlpatterns += patterns('',
-        (r'^media/(?P<path>.*)$', 'django.views.static.serve',
-            {'document_root': os.path.join(os.path.dirname(__file__), 'media')}),
+    urlpatterns += patterns('django.contrib.staticfiles.views',
+        url(r'^media/static/(?P<path>.*)$', 'serve'),
     )
