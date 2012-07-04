@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'OpenSansCondensedBold';
+    src: url('../font/OpenSans-CondBold-webfont.eot');
+    src: url('../font/OpenSans-CondBold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/OpenSans-CondBold-webfont.woff') format('woff'),
+         url('../font/OpenSans-CondBold-webfont.ttf') format('truetype'),
+         url('../font/OpenSans-CondBold-webfont.svg#OpenSansCondensedBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

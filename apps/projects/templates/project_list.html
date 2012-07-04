@@ -1,47 +1,32 @@
 {% extends "site_base.html" %}
 {% block content %}
-<div class="container">
+<aside><div class="wrapper bgray dropshad"><h3>Table of Contents</h3></div><ul>
+    <li><a href="#django-content-apps">Django Content Apps</a></li>
+    <li><a href="#django-decorator-apps">Django Decorator Apps</a></li>
+    <li><a href="#django-utilities">Django Utilities</a></li>
+    <li><a href="#python-modules">Python Modules</a></li>
+    <li><a href="#websites">Web Sites</a></li>
+</ul></aside>
+<article>
     <section class="row" id="django-content-apps">
-        <div class="six columns">
-            <h2>Django Content Apps <small>Apps that manage specific content</small></h2>
-        </div>
-        <div class="six columns">
-            {% include "project_thumbnails.html" with projects=contentapps %}
-        </div>
-    </section>
-</div>
-<hr>
-    <div class="page-header"><a name="django-decorator-apps"></a><h2>Django Decorator Apps <small>Apps that can add functionality to other apps</small></h2></div>
+    <h2>Django Content Apps <small>Apps that manage specific content</small></h2>
+    {% include "project_thumbnails.html" with projects=contentapps %}
+</section>
+<section id="django-decorator-apps">
+    <h2>Django Decorator Apps <small>Apps that can add functionality to other apps</small></h2>
     {% include "project_thumbnails.html" with projects=decoratorapps %}
-
-    <div class="page-header"><a name="django-utilities"></a><h2>Django Utilities <small>Apps or modules that help Django</small></h2></div>
+</section>
+<section id="django-utilities">
+    <h2>Django Utilities <small>Apps or modules that help Django</small></h2>
     {% include "project_thumbnails.html" with projects=utilities %}
-
-    <div class="page-header"><a name="python-modules"></a><h2>Python Modules <small>Apps that can add functionality to other apps</small></h2></div>
+</section>
+<section id="python-modules">
+    <h2>Python Modules <small>Apps that can add functionality to other apps</small></h2>
     {% include "project_thumbnails.html" with projects=pythonapps %}
-
-    <div class="page-header"><a name="websites"></a><h2>Web Sites <small>Complete code for web sites</small></h2></div>
+</section>
+<section id="websites">
+    <h2>Web Sites <small>Complete code for web sites</small></h2>
     {% include "project_thumbnails.html" with projects=websites %}
-
-{% endblock content %}<div class="container">
-    <section class="row" id="django-content-apps">
-        <div class="six columns">
-            <h2>Django Content Apps <small>Apps that manage specific content</small></h2>
-        </div>
-        <div class="six columns">
-            {% include "project_thumbnails.html" with projects=contentapps %}
-        </div>
-    </section>
-</div>
-<hr>
-    <div class="page-header"><a name="django-decorator-apps"></a><h2>Django Decorator Apps <small>Apps that can add functionality to other apps</small></h2></div>
-    {% include "project_thumbnails.html" with projects=decoratorapps %}
-
-    <div class="page-header"><a name="django-utilities"></a><h2>Django Utilities <small>Apps or modules that help Django</small></h2></div>
-    {% include "project_thumbnails.html" with projects=utilities %}
-
-    <div class="page-header"><a name="python-modules"></a><h2>Python Modules <small>Apps that can add functionality to other apps</small></h2></div>
-    {% include "project_thumbnails.html" with projects=pythonapps %}
-
-    <div class="page-header"><a name="websites"></a><h2>Web Sites <small>Complete code for web sites</small></h2></div>
-    {% include "project_thumbnails.html" with projects=websites %}
+</section>
+</article>
+{% endblock content %}
