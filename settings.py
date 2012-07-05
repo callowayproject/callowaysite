@@ -29,6 +29,8 @@ DATABASES = {
     }
 }
 
+SITE_ID = 1
+
 ROOT_URLCONF = 'urls'
 
 TIME_ZONE = 'America/New_York'
@@ -88,8 +90,10 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'robots',
     'djangopypi',
     'projects',
+    'analytical',
 )
 
 ADMIN_TOOLS_THEMING_CSS = 'admin/css/theming.css'
