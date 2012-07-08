@@ -19,6 +19,9 @@ class Project(models.Model):
     project_type = models.IntegerField(choices=PROJECT_TYPES, default=2)
     status = models.IntegerField(choices=STATUSES, default=0)
 
+    class Meta:
+        ordering = ('name', )
+
     def __unicode__(self):
         return self.name
 
