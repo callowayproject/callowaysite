@@ -12,24 +12,27 @@
         <!--Facebook Metadata /-->
         <meta property="fb:page_id" content="" />
         <meta property="og:image" content="" />
-        <meta property="og:description" content=""/>
+        <meta property="og:description" content="Calloway Development builds and maintains custom Django-based web sites and applications."/>
         <meta property="og:title" content=""/>
 
         <!--Google+ Metadata /-->
         <meta itemprop="name" content="">
-        <meta itemprop="description" content="">
+        <meta itemprop="description" content="Calloway Development builds and maintains custom Django-based web sites and applications.">
         <meta itemprop="image" content="">
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta name="description" content="" />
+        <meta name="description" content="Calloway Development builds and maintains custom Django-based web sites and applications." />
         <meta name="keywords" content="" />
-        <meta name="author" content="humans.txt">
+        <meta name="author" content="Calloway Development, LLC">
 
         <!-- Included CSS Files -->
+<script type="text/javascript" src="//use.typekit.net/wlp6not.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
         <link href="{{ STATIC_URL }}css/font-awesome.css" rel="stylesheet" />
         <link href="{{ STATIC_URL }}css/font-opensans.css" rel="stylesheet" />
+        <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet" type="text/css" />
         <link href="{{ STATIC_URL }}css/styles.css" rel="stylesheet" type="text/css" />
 
         <!-- IE Fix for HTML5 Tags -->
@@ -51,33 +54,27 @@
 		<div id="header-container" class="dropshad">
 			<header class="full-wrapper clearfix tan dropshad">
 				<h1 id="logo">Calloway Open Source Development</h1>
-				<nav class="headfont wrapper wide-only">
-					<ul class="left">
-						<li><a href="/"><i class="icon-home"></i>Home</a></li>
-						<li><a href="/projects/"><i class="icon-briefcase"></i>Projects</a></li>
-					</ul>
-					<ul class="right">
-						<li><a href="/about/"><i class="icon-user"></i>People</a></li>
-						<li><a href="/blog/"><i class="icon-comment"></i>Blog</a></li>
-					</ul>
-				</nav>
 			</header>
 		</div>
 	<div id="main-container">
-		<div id="main" class="wrapper clearfix">
-			<nav class="headfont not-wide">
+		<div class="wrapper clearfix vpad15">
+			<nav class="headfont column main">
 				<ul>
-					<li class="btn"><a href="/"><i class="icon-home"></i>Home</a></li>
-					<li class="btn"><a href="/projects/"><i class="icon-briefcase"></i>Projects</a></li>
-					<li class="btn"><a href="/about/"><i class="icon-user"></i>People</a></li>
-					<li class="btn"><a href="/blog/"><i class="icon-comment"></i>Blog</a></li>
+					<li class=""><a href="/"><i class="icon-home"></i>&nbsp;Home</a></li>
+					<li class=""><a href="/projects/"><i class="icon-briefcase"></i>&nbsp;Projects</a></li>
+					<li class=""><a href="/about/"><i class="icon-user"></i>&nbsp;People</a></li>
+					<li class=""><a href="/blog/"><i class="icon-comment"></i>&nbsp;Blog</a></li>
 				</ul>
 			</nav>
+        </div>
+        <hr class="hr bgray dropshad"/>
+        {# <div class="full-container bgray dropshad"><p>&nbsp;</p></div> #}
+        <div class="wrapper clearfix vpad15">
             {% block content %}{% endblock %}
 		</div>
 	</div>
 	<div id="footer-container">
-		<footer class="wrapper">&copy; {% now "Y" %} Calloway Open Source Development</footer>
+		<footer class="wrapper">&copy; {% now "Y" %} Calloway Development LLC</footer>
 	</div>
     {% block extra_body_base %}
         {% block extra_body %}{% endblock %}

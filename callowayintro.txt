@@ -1,0 +1,64 @@
+The Calloway Project started from frustration. A great team of web developers grew frustrated with the tools available. Their environment was demanding, but also fertile. They decided to make their own tools.
+
+Over the span of a year or so this team developed what they first thought of as a CMS framework. Developing under the code name of Bombay, they divvied up different parts and made a modular system. Eventually they called it Calloway, after Cab Calloway.
+
+But Calloway wasn't really a CMS, or a CMS framework. It was something else. After some consideration, I believe it was a way of looking at projects. It was a philosophy, built from experience in the trenches.
+
+The team has gone their separate ways; each growing professionally in ways their original employer couldn't provide.
+
+--------------
+
+The Calloway team developed a core set of principles and assumptions that drove their decisions:
+
+#. **No two projects are exactly alike.**
+
+   Projects are complex combinations of code designed for a certain set of people to use. You can write reuseable code, but is it only reusable for that exact situation? We believe it is only truly reusable if it is also flexible.
+
+#. Most projects and ideas will fail, should fail, and should do so as fast as possible.
+
+   We worked at a pretty typical large organization where every executive had their "Great Idea™". We knew that it was probably doomed for any number of reasons. Still, we had to do all the work to get something up and running to demonstrate it.
+
+   That scenario could be frustrating. We decided that the issue was not the stupid ideas of the executives, but the tools that forced us to do so much work just to see if the idea would work.
+
+   Failure has such a bad reputation. Failure in and of itself is nothing, unless you allow the reprocussions of that failure to get too high. Make it easy to prototype ideas and see if they are worth further development. You might be surprised.
+
+#. People have their own ways of doing things.
+
+   This is obvious, but handled so poorly. As a set of highly opinionated individuals discovers, you need to make your tools adaptable to the individuals using them. And they may surprise you with how they get used.
+
+#. Things change.
+
+These principles and assumptions drove other design ideas:
+
+#. Loose coupling.
+
+#. Break down the tools to their simplest bits.
+
+#. Start from scratch, often.
+
+#. If you want people to do something, make it incredibly easy to do.
+
+#. Document your idea to make sure you know what you're talking about.
+
+#. Use external libraries whenever you can.
+
+--------------------------------
+
+We customize, integrate and support open source software for great web sites.
+
+Technologies:
+
+* Django and GeoDjango
+* Python
+* Linux
+* PostgreSQL and PostGIS
+* Varnish
+* Cloud-based services
+
+We believe in releasing code under an open-source license.
+
+We believe it is the carpenter, not the tools, that make an excellent final product.
+
+We believe in building upon the work of others.
+
+We believe in creating systems that last beyond us.

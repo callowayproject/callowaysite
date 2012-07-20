@@ -90,10 +90,12 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'robots',
     'djangopypi',
     'projects',
     'analytical',
+    'south',
 )
 
 ADMIN_TOOLS_THEMING_CSS = 'admin/css/theming.css'

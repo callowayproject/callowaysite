@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 from django.core.files.images import get_image_dimensions
 
@@ -18,6 +20,7 @@ class Project(models.Model):
     external_id = models.IntegerField(blank=True, null=True)
     project_type = models.IntegerField(choices=PROJECT_TYPES, default=2)
     status = models.IntegerField(choices=STATUSES, default=0)
+    updated = models.DateTimeField(editable=False, default=datetime.datetime.now)
 
     class Meta:
         ordering = ('name', )

@@ -19,6 +19,10 @@ class Command(BaseCommand):
                 proj.description = repo.description
                 proj.url = repo.html_url
                 proj.is_fork = repo.fork
+                if repo.pushed_at:
+                    proj.updated = repo.pushed_at
+                else:
+                    proj.updated = repo.updated_at
                 proj.save()
             except Project.DoesNotExist:
                 proj = Project(

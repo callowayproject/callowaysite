@@ -17,7 +17,8 @@ class ProjectAdmin(admin.ModelAdmin):
             'fields': ('code_url', 'docs_url')
         }),
         ('Info', {
-            'fields': ('is_fork', 'why_forked', 'external_id', 'project_type', 'status')
+            'fields': ('is_fork', 'why_forked', 'external_id', 'project_type',
+                       'status', )
         })
     )
 

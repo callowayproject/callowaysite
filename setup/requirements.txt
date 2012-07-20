@@ -6,3 +6,4 @@ django-extensions==0.9
 django-robots==0.8.1
 pygithub3==0.4.1
 requests==0.13.2
+South==0.7.5

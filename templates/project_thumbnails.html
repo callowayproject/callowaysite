@@ -1,17 +1,19 @@
+{% load humanize %}
 {% for project in projects %}
-<div class="clearfix well">
+<div  id="{{ project.name }}" class="clearfix well">
     {% if project.logo %}
-        <img src="{{ project.logo.url }}" class="left thumbnail" width="{{ project.logo_width }}" height="{{ project.logo_height }}" alt="{{ project.name }}">
+        <img src="{{ project.logo.url }}" class="left rmar" width="{{ project.logo_width }}" height="{{ project.logo_height }}" alt="{{ project.name }}">
     {% else %}
-        <img src="{{ STATIC_URL }}images/package.png" class="left thumbnail" width="140" height="137" alt="{{ project.name }}">
+        <img src="{{ STATIC_URL }}images/package.png" class="left rmar" width="140" height="137" alt="{{ project.name }}">
     {% endif %}
     <div>
-        <h4>{{ project.name }}{% if project.status == 1 %}&nbsp;<span class="label label-important">Deprecated</span>{% endif %}</h4>
+        <h3>{{ project.name }}{% if project.status == 1 %}&nbsp;<span class="label label-important">Deprecated</span>{% endif %}</h3>
         <p>{{ project.description }}</p>
         {% if project.is_fork %}
             <p><i class="icon-random"></i>{% if project.why_forked %}{{ project.why_forked }}{% else %}
                 Forked from another project{% endif %}</p>
         {% endif %}
+        <p>Last Updated: {{ project.updated|naturaltime }}</p>
         {% if project.code_url %}
             <p class="btn"><a href="{{ project.code_url }}"><i class="icon-github"></i> Code</a></p>
         {% endif %}
