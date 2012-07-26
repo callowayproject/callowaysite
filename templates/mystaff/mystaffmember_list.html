@@ -1,0 +1,20 @@
+{% extends "site_base.html" %}
+{% block content %}
+{% for item in object_list %}
+    <h2>{{ item.get_full_name }}</h2>
+    {% if item.photo %}
+        <img src="{{ item.photo.url }}" class="left rmar" width="{{ item.photo_width }}" height="{{ item.photo_height }}" alt="{{ item.get_full_name }}">
+    {% else %}
+        <img src="{{ STATIC_URL }}images/user.png" class="left rmar" width="140" height="148" alt="{{ item.get_full_name }}">
+    {% endif %}
+    <p>{{ item.bio }}</p>
+    <p>
+        {% if item.twitter %}
+            <a class="btn" href="https://twitter.com/{{ item.twitter }}"><i class="icon-twitter"></i>&nbsp;@{{ item.twitter}}</a>
+        {% endif %}
+        {% if item.github %}
+            <a class="btn" href="https://github.com/{{ item.github }}"><i class="icon-github"></i>&nbsp;{{ item.github}}</a>
+        {% endif %}
+    </p>
+{% endfor %}
+{% endblock content %}

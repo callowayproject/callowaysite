@@ -22,6 +22,7 @@ urlpatterns = patterns('',
         r'^projects/$',
         'projects.views.project_list',
         name='project_list'),
+    (r'^people/', include('mystaff.urls')),
 )
 
 urlpatterns += patterns('',

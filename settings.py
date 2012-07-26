@@ -96,6 +96,7 @@ INSTALLED_APPS = (
     'projects',
     'analytical',
     'south',
+    'mystaff',
 )
 
 ADMIN_TOOLS_THEMING_CSS = 'admin/css/theming.css'
