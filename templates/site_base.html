@@ -7,29 +7,31 @@
 <!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" itemscope itemtype="http://schema.org/Product"> <!--<![endif]-->
     <head>
-        <title>{% if SITE_NAME %}{{ SITE_NAME }} : {% endif %}{% block head_title %}{% endblock %}</title>
+        <title>Calloway : {% block head_title %}{% endblock %}</title>
 
         <!--Facebook Metadata /-->
+        {% comment %}
         <meta property="fb:page_id" content="" />
         <meta property="og:image" content="" />
-        <meta property="og:description" content="Calloway Development builds and maintains custom Django-based web sites and applications."/>
-        <meta property="og:title" content=""/>
+        {% endcomment %}
+        <meta property="og:description" content="{% block fb_description %}Calloway Development builds and maintains custom Django-based web sites and applications.{% endblock %}"/>
+        <meta property="og:title" content="{% block fb_title %}{% endblock fb_title %}"/>
 
         <!--Google+ Metadata /-->
-        <meta itemprop="name" content="">
-        <meta itemprop="description" content="Calloway Development builds and maintains custom Django-based web sites and applications.">
-        <meta itemprop="image" content="">
+        <meta itemprop="name" content="{% block gp_title %}{% endblock %}">
+        <meta itemprop="description" content="{% block gp_description %}Calloway Development builds and maintains custom Django-based web sites and applications.{% endblock %}">
+        {% comment %}<meta itemprop="image" content="">{% endcomment %}
 
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta name="description" content="Calloway Development builds and maintains custom Django-based web sites and applications." />
-        <meta name="keywords" content="" />
+        <meta name="description" content="{% block description %}Calloway Development builds and maintains custom Django-based web sites and applications.{% endblock %}" />
+        <meta name="keywords" content="{% block keywords %}Django, python, consulting, development{% endblock keywords %}" />
         <meta name="author" content="Calloway Development, LLC">
 
         <!-- Included CSS Files -->
-<script type="text/javascript" src="//use.typekit.net/wlp6not.js"></script>
-<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <script type="text/javascript" src="//use.typekit.net/wlp6not.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
         <link href="{{ STATIC_URL }}css/font-awesome.css" rel="stylesheet" />
         <link href="{{ STATIC_URL }}css/font-opensans.css" rel="stylesheet" />
         <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet" type="text/css" />

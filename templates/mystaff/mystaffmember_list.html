@@ -1,4 +1,14 @@
 {% extends "site_base.html" %}
+{% block head_title %}People{% endblock head_title %}
+{% block fb_title %}People{% endblock %}
+{% block gp_title %}People{% endblock %}
+
+{% block fb_description %}These the people that develop and maintain Calloway Development's open source projects.{% endblock %}
+{% block gp_description %}These the people that develop and maintain Calloway Development's open source projects.{% endblock %}
+{% block description %}These the people that develop and maintain Calloway Development's open source projects.{% endblock %}
+
+{% block keywords %}Django, python, open source, projects, development, people{% endblock keywords %}
+
 {% block content %}
 {% for item in object_list %}
 <div class="row">
