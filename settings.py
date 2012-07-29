@@ -115,6 +115,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'wsgi.application'
 
+GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-8352901-3'
+
 try:
     from local_settings import *
 except ImportError:

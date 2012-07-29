@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load analytical %}
 <!doctype html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
@@ -7,6 +8,7 @@
 <!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" itemscope itemtype="http://schema.org/Product"> <!--<![endif]-->
     <head>
+        {% analytical_head_top %}
         <title>Calloway : {% block head_title %}{% endblock %}</title>
 
         <!--Facebook Metadata /-->
@@ -49,9 +51,11 @@
         {% block extra_head_base %}
             {% block extra_head %}{% endblock %}
         {% endblock %}
+        {% analytical_head_bottom %}
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
+        {% analytical_body_top %}
     	<!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 		<div id="header-container" class="dropshad">
 			<header class="full-wrapper clearfix tan dropshad">
@@ -81,5 +85,6 @@
     {% block extra_body_base %}
         {% block extra_body %}{% endblock %}
     {% endblock %}
+    {% analytical_body_bottom %}
     </body>
 </html>
