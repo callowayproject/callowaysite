@@ -18,7 +18,7 @@
     {% else %}
         <img src="{{ STATIC_URL }}images/user.png" class="left rmar" width="140" height="148" alt="{{ item.get_full_name }}">
     {% endif %}
-    <p>{{ item.bio }}</p>
+    <p>{{ item.bio|safe }}</p>
     <p>
         {% if item.twitter %}
             <a class="btn" href="https://twitter.com/{{ item.twitter }}"><i class="icon-twitter"></i>&nbsp;@{{ item.twitter}}</a>
