@@ -117,6 +117,15 @@ WSGI_APPLICATION = 'wsgi.application'
 
 GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-8352901-3'
 
+MIDDLEWARE_CLASSES = (
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+)
+
+
 try:
     from local_settings import *
 except ImportError:
