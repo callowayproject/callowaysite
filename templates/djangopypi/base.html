@@ -1,0 +1,17 @@
+{% extends "site_base.html" %}
+{% block css %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/uikit.almost-flat.css">
+{% endblock css %}
+{% block extra_head %}
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+{% endblock %}
+</head>
+<body>
+{% block body %}
+    <div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+{% block content %}{% endblock %}
+</div>
+{% block extra_body %}
+        <script src="js/uikit.min.js"></script>
+{% endblock %}
+{% endblock %}

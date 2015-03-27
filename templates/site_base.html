@@ -9,7 +9,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" itemscope itemtype="http://schema.org/Product"> <!--<![endif]-->
     <head>
         {% analytical_head_top %}
-        <title>Calloway : {% block head_title %}{% endblock %}</title>
+        <title>{% block head_title %}{% endblock %} | Calloway</title>
 
         <!--Facebook Metadata /-->
         {% comment %}
@@ -32,13 +32,14 @@
         <meta name="author" content="Calloway Development, LLC">
 
         <!-- Included CSS Files -->
+        {% block css %}
         <script type="text/javascript" src="//use.typekit.net/wlp6not.js"></script>
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
         <link href="{{ STATIC_URL }}css/font-awesome.css" rel="stylesheet" />
         <link href="{{ STATIC_URL }}css/font-opensans.css" rel="stylesheet" />
         <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet" type="text/css" />
         <link href="{{ STATIC_URL }}css/styles.css" rel="stylesheet" type="text/css" />
-
+        {% endblock css %}
         <!-- IE Fix for HTML5 Tags -->
         <!--[if lt IE 9]>
             <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -55,6 +56,7 @@
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
+    {% block body %}
         {% analytical_body_top %}
     	<!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 		<div id="header-container" class="dropshad">
@@ -86,5 +88,7 @@
         {% block extra_body %}{% endblock %}
     {% endblock %}
     {% analytical_body_bottom %}
+    {% endblock body %}
+
     </body>
 </html>

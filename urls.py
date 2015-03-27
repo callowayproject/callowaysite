@@ -1,7 +1,8 @@
-from django.conf.urls.defaults import *
+from django.conf.urls import patterns, url, include
 from django.contrib import admin
 from django.conf import settings
 
+from django.views.generic import TemplateView
 admin.autodiscover()
 
 sitemaps = {}
@@ -15,8 +16,7 @@ urlpatterns = patterns('',
         name='robots_rule_list'),
     url(
         r'^$',
-        'django.views.generic.simple.direct_to_template',
-        {'template': 'homepage.html'},
+        TemplateView.as_view(template_name='homepage.html'),
         name='homepage'),
     url(
         r'^projects/$',
