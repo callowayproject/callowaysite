@@ -29,6 +29,12 @@ DATABASES = {
     }
 }
 
+ALLOWED_HOSTS = [
+    'www.callowayproject.com',
+    'callowayproject.com',
+    '166.78.113.207',
+]
+
 SITE_ID = 1
 
 ROOT_URLCONF = 'urls'
