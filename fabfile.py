@@ -241,6 +241,7 @@ def make_tag(tag):
     local('git tag %s;git push --tags' % tag)
 
 
+@hosts(PROD_HOST)
 def link_configs():
     """
     Link configurations
@@ -248,14 +249,15 @@ def link_configs():
     cur_deploy_path = env.site_root
 
     nginx_conf_link = "/etc/nginx/sites-available/%s" % env.site_name
-    nginx_conf_path = "%s/conf/nginx.conf" % cur_deploy_path
-    sudo(_make_link_cmd(nginx_conf_path, nginx_conf_link))
+    nginx_conf_path = "%sconf/nginx.conf" % cur_deploy_path
+    if not exists(nginx_conf_link):
+        sudo(_make_link_cmd(nginx_conf_path, nginx_conf_link))
     if not exists("/etc/nginx/sites-enabled/%s" % env.site_name):
         sudo("nxensite %s" % env.site_name)
         sudo("/etc/init.d/nginx reload")
-    upstart_link = "/etc/init/%s" % env.site_name
+    upstart_link = "/etc/init/%s.conf" % env.site_name
     if not exists(upstart_link):
-        upstart_path = "%s/conf/upstart.conf" % cur_deploy_path
+        upstart_path = "%sconf/upstart.conf" % cur_deploy_path
         sudo(_make_link_cmd(upstart_path, upstart_link))
         sudo('initctl reload-configuration')
         sudo('start %s' % env.site_name)
