@@ -58,7 +58,7 @@ except ImportError:
 try:
     from local_settings import STATIC_ROOT
 except ImportError:
-    STATIC_ROOT = os.path.join(MEDIA_ROOT_PREFIX, 'static')
+    STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticmedia')
 
 MEDIA_URL = '%suploads/' % MEDIA_URL_PREFIX
 STATIC_URL = "%sstatic/" % MEDIA_URL_PREFIX
