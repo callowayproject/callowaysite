@@ -1,20 +1,54 @@
+upstream gunicorn-calloway {
+  server unix:///var/run/calloway.sock;
+}
+
 server {
-    listen       80;
-    server_name  media-$$$$DEV_APP_HOST$$$$;
-    access_log   /var/log/nginx/media-$$$$DEV_APP_HOST$$$$.access.log;
-    location     / {
-        autoindex on;
-        index     index.html;
-        root      /var/code/callowaysite/media;
-        expires   max;
-    }
+  listen   80;
+  server_name www.callowayproject.com callowayproject.com;
+
+  access_log  /var/log/nginx/calloway.access.log;
+  error_log   /var/log/nginx/calloway.error.log;
+
+  client_max_body_size        0;
+
+  location /media/static/ {
+    alias /var/www/callowaysite/staticmedia/;
+  }
+
+  location /media/ {
+    etag on;
+    if_modified_since before;
+    root /var/www/callowaysite;
+  }
+
+  location /static/ {
+    alias /var/www/callowaysite/staticmedia/;
+  }
+
+  location / {
+    root /var/www/callowaysite/media;
+    try_files $uri @proxy;
+  }
+
+  location @proxy {
+    proxy_pass                  http://gunicorn-calloway;
+    proxy_redirect              off;
+    proxy_set_header            Host $host;
+    proxy_set_header            X-Real-IP $remote_addr;
+    proxy_set_header            X-Forwarded-For $proxy_add_x_forwarded_for;
+    client_max_body_size        10m;
+    client_body_buffer_size     128k;
+    proxy_connect_timeout       90;
+    proxy_send_timeout          90;
+    proxy_read_timeout          90;
+    proxy_buffer_size           4k;
+    proxy_buffers               4 32k;
+    proxy_busy_buffers_size     64k;
+    proxy_temp_file_write_size  64k;
+  }
 }
 server {
     listen       80;
-    server_name  $$$$DEV_APP_HOST$$$$;
-    access_log   /var/log/nginx/$$$$DEV_APP_HOST$$$$.access.log;
-    location     / {
-        proxy_pass  http://webcluster;
-        include     /var/code/callowaysite/conf/proxy.conf;
-    }
+    server_name  www.callowayproject.com;
+    return       301 http://callowayproject.com$request_uri;
 }
