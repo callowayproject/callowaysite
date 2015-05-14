@@ -122,6 +122,7 @@ WSGI_APPLICATION = 'wsgi.application'
 GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-8352901-3'
 
 MIDDLEWARE_CLASSES = [
+    'djangopypi.middleware.ConsoleExceptionMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
