@@ -22,8 +22,10 @@ def root(request, fallback_view=None, **kwargs):
         log.debug('Distutils request received')
         parse_distutils_request(request)
         action = request.POST.get(':action', '')
+        action = action.strip()
     else:
         action = request.GET.get(':action', '')
+        action = action.strip()
 
     if not action:
         log.debug('No action in root view')
