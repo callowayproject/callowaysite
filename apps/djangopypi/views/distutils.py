@@ -80,17 +80,17 @@ def register_or_upload(request):
             """ Need to add handling optionally deleting old and putting up new """
             return HttpResponseBadRequest('That file has already been uploaded...')
 
-    md5_digest = request.POST.get('md5_digest', '')
+    md5_digest = request.POST.get('md5_digest', '').strip()
 
     try:
         Distribution.objects.create(
             release=release,
             content=uploaded,
-            filetype=request.POST.get('filetype', 'sdist'),
-            pyversion=request.POST.get('pyversion', ''),
+            filetype=request.POST.get('filetype', 'sdist').strip(),
+            pyversion=request.POST.get('pyversion', '').strip(),
             uploader=request.user,
-            comment=request.POST.get('comment', ''),
-            signature=request.POST.get('gpg_signature', ''),
+            comment=request.POST.get('comment', '').strip(),
+            signature=request.POST.get('gpg_signature', '').strip(),
             md5_digest=md5_digest)
     except Exception as e:
         log.exception('Failure when storing upload')
