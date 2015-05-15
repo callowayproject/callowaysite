@@ -77,7 +77,7 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_ROOT, 'templates'),
 )
 
-#CACHE_BACKEND = 'versionedcache.backend://localhost:11211/'
+# CACHE_BACKEND = 'versionedcache.backend://localhost:11211/'
 CACHE_BACKEND = 'dummy:///'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -133,6 +133,39 @@ MIDDLEWARE_CLASSES = [
 ]
 
 ROOT_URLCONF = 'urls'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt': "%d/%b/%Y %H:%M:%S"
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'callowaysite.log',
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        'djangopypi': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+        },
+    },
+    'root': {
+        'handlers': ['file'],
+        'level': 'DEBUG',
+    }
+}
+
 
 try:
     from local_settings import *
