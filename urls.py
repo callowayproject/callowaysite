@@ -33,3 +33,7 @@ if settings.DEBUG:
     urlpatterns += patterns('django.contrib.staticfiles.views',
         url(r'^media/static/(?P<path>.*)$', 'serve'),
     )
+    urlpatterns += patterns('django.views.static',
+        url(r'^media/uploads(?P<path>.*)$', 'serve', {
+            'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
+    )

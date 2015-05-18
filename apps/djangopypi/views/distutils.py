@@ -83,7 +83,7 @@ def register_or_upload(request):
     md5_digest = request.POST.get('md5_digest', '').strip()
 
     try:
-        Distribution.objects.create(
+        new_obj = Distribution.objects.create(
             release=release,
             content=uploaded,
             filetype=request.POST.get('filetype', 'sdist').strip(),
@@ -92,6 +92,13 @@ def register_or_upload(request):
             comment=request.POST.get('comment', '').strip(),
             signature=request.POST.get('gpg_signature', '').strip(),
             md5_digest=md5_digest)
+
+        from djangopypi.signals import get_hash
+        my_digest = get_hash(new_obj)
+        if my_digest != md5_digest:
+            new_obj.md5_digest = my_digest
+            new_obj.save()
+
     except Exception as e:
         log.exception('Failure when storing upload')
         log.exception(e.msg)

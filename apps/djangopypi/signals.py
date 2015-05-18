@@ -49,17 +49,21 @@ def autohide_save_package_handler(sender, instance, *args, **kwargs):
         release.save()
 
 
+def get_hash(instance):
+    digest = md5_constructor()
+    try:
+        fh = instance.content.storage.open(instance.content.name)
+        map(digest.update, fh.readlines())
+        fh.close()
+        return digest.hexdigest()
+    except Exception:
+        log.exception("Error calculating hash")
+
+
 def distribution_hash(sender, instance, *args, **kwargs):
     if not instance.md5_digest and instance.content:
-        digest = md5_constructor()
-        try:
-            fh = instance.content.storage.open(instance.content.name)
-            map(digest.update, fh.readlines())
-            fh.close()
-            instance.md5_digest = digest.hexdigest()
-            instance.save()
-        except Exception:
-            log.exception("Error calculating hash")
+        instance.md5_digest = get_hash(instance)
+        instance.save()
 
 signals.post_save.connect(autohide_new_release_handler, sender=Release)
 signals.pre_save.connect(autohide_save_release_handler, sender=Release)
