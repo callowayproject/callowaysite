@@ -15,8 +15,10 @@ DEPLOY_ROOT = '/var/www/'
 env.site_name = 'calloway'
 env.site_root = "%scallowaysite/" % DEPLOY_ROOT
 env.repo_url = "callowaysiterepo:callowayproject/callowaysite.git"
+env.forward_agent = True
 
-TEST_HOST = "webdev@166.78.113.207"
+#TEST_HOST = "webdev@166.78.113.207"
+TEST_HOST = "webdev@45.33.77.6"
 DATABASE_HOST = TEST_HOST
 PROD_HOST = [TEST_HOST, ]
 
@@ -246,14 +248,16 @@ def link_configs():
     """
     Link configurations
     """
-    cur_deploy_path = env.site_root
+    cur_deploy_path = "%scurrent_deploy/" % env.site_root
 
     nginx_conf_link = "/etc/nginx/sites-available/%s" % env.site_name
     nginx_conf_path = "%sconf/nginx.conf" % cur_deploy_path
     if not exists(nginx_conf_link):
         sudo(_make_link_cmd(nginx_conf_path, nginx_conf_link))
     if not exists("/etc/nginx/sites-enabled/%s" % env.site_name):
-        sudo("nxensite %s" % env.site_name)
+        nginx_conf_link = "/etc/nginx/sites-enabled/%s" % env.site_name
+        nginx_conf_path = "/etc/nginx/sites-available/%s" % env.site_name
+        sudo(_make_link_cmd(nginx_conf_path, nginx_conf_link))
         sudo("/etc/init.d/nginx reload")
     upstart_link = "/etc/init/%s.conf" % env.site_name
     if not exists(upstart_link):
@@ -263,7 +267,7 @@ def link_configs():
         sudo('start %s' % env.site_name)
 
 
-def bootstrap(tag, settings_path='production'):
+def bootstrap(tag, settings_path='settings'):
     """
     Bootstrap a deployment. Useful if something fails, or if you just want to.
     """
@@ -275,16 +279,21 @@ def bootstrap(tag, settings_path='production'):
 
     # Bootstrap the code
     with cd(deploy_dir):
-        run("python bootstrap.py")
+        # run("python bootstrap.py")
         with prefix('source %s/bin/activate' % virtualenv):
             run("./manage.py collectstatic --noinput --verbosity 0 --settings %s" % settings_file)
-            run("./manage.py migrate --noinput --delete-ghost-migrations --settings %s" % settings_file)
+            run("./manage.py migrate --noinput --settings %s" % settings_file)
 
 
+@hosts(PROD_HOST)
 def deploy_updateable(tag):
     """
     Deploy a checkout of the repository.
     """
+    if not exists(env.site_root):
+        sudo('mkdir -m 0755 -p %s' % env.site_root)
+        sudo('chown webdev:www-data %s' % env.site_root)
+
     deploy_dir = "%s%s" % (env.site_root, tag)
     if exists(deploy_dir):
         print "%s is already deployed." % tag
@@ -293,6 +302,7 @@ def deploy_updateable(tag):
         run('git clone %s %s' % (env.repo_url, tag))
     with cd(deploy_dir):
         run('git checkout %s' % tag)
+    sudo(_make_link_cmd(deploy_dir, '%scurrent_deploy' % env.site_root))
     bootstrap(tag)
 
 
