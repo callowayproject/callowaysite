@@ -325,19 +325,9 @@ def update(tag=None):
 
         with prefix('source %s/bin/activate' % virtualenv):
             run("pip install -r requirements.txt")
-            run("./manage.py collectstatic --noinput --verbosity 0 --settings settings.production")
-
-            settings_files = [("education", "settings.production",), ]
-            settings_files.extend(
-                [('education_%s' % x, 'sites.%s.settings.base' % x) for x in _list_sites()]
-            )
-            sudo("supervisorctl restart rqworker")
-            sudo("supervisorctl restart rqscheduler")
-            for site_name, site_settings in settings_files:
-                if exists("sites/%s/static" % site_name):
-                    run("./manage.py collectstatic --noinput --verbosity 0 --settings %s" % site_settings)
-                run("./manage.py migrate --noinput --settings %s" % site_settings)
-                sudo("restart %s" % site_name)
+            run("./manage.py collectstatic --noinput --verbosity 0")
+            run("./manage.py migrate --noinput")
+            sudo("restart calloway")
 
 
 @hosts(DATABASE_HOST)
