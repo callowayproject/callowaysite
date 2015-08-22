@@ -328,6 +328,7 @@ def update(tag=None):
             run("./manage.py collectstatic --noinput --verbosity 0")
             run("./manage.py migrate --noinput")
             sudo("restart calloway")
+    sudo('/etc/init.d/nginx reload')
 
 
 @hosts(DATABASE_HOST)
