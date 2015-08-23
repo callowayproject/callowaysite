@@ -8,7 +8,7 @@ from djangopypi.views.xmlrpc import parse_xmlrpc_request
 from djangopypi.settings import FALLBACK_VIEW, ACTION_VIEWS
 from djangopypi.utils import import_item
 
-log = getLogger('djangopypi.views')
+log = getLogger('djangopypi')
 
 
 @csrf_exempt

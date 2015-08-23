@@ -1,9 +1,11 @@
+from logging import getLogger
 import xmlrpclib
 
 from django.conf import settings
 from django.http import HttpResponseNotAllowed, HttpResponse
 
 from djangopypi.models import Package, Release
+log = getLogger('djangopypi')
 
 
 class XMLRPCResponse(HttpResponse):
@@ -22,6 +24,7 @@ def parse_xmlrpc_request(request):
     args, command = xmlrpclib.loads(request.raw_post_data)
 
     if command in settings.DJANGOPYPI_XMLRPC_COMMANDS:
+        log.debug('XML RPC command %s args %s' % (command, repr(args)))
         return settings.DJANGOPYPI_XMLRPC_COMMANDS[command](request, *args)
     else:
         return HttpResponseNotAllowed(settings.DJANGOPYPI_XMLRPC_COMMANDS.keys())
@@ -58,7 +61,7 @@ def release_urls(request, package_name, version):
             })
     except (Package.DoesNotExist, Release.DoesNotExist):
         pass
-
+    log.debug('XML RPC - release_urls - %s' % repr(dists))
     return XMLRPCResponse(params=(dists,))
 
 
@@ -96,6 +99,7 @@ def release_data(request, package_name, version):
     except (Package.DoesNotExist, Release.DoesNotExist):
         pass
 
+    log.debug('XML RPC - release_data - %s' % repr(output))
     return XMLRPCResponse(params=(output,))
 
 

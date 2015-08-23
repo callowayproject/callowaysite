@@ -11,7 +11,7 @@ from djangopypi.decorators import basic_auth
 from djangopypi.models import Package, Release, Distribution, Classifier
 
 
-log = getLogger('djangopypi.views.distutils')
+log = getLogger('djangopypi')
 
 ALREADY_EXISTS_FMT = _(
     "A file named '%s' already exists for %s. Please create a new release.")
@@ -23,15 +23,16 @@ def register_or_upload(request):
         return HttpResponseBadRequest('Only post requests are supported')
 
     name = request.POST.get('name', None).strip()
-
     if not name:
         return HttpResponseBadRequest('No package name specified')
 
     try:
         package = Package.objects.get(name=name)
+        log.debug('distutils - register_or_upload - Found package: %s' % name)
     except Package.DoesNotExist:
         package = Package.objects.create(name=name)
         package.owners.add(request.user)
+        log.debug('distutils - register_or_upload - Created package: %s' % name)
 
     if (request.user not in package.owners.all() and
             request.user not in package.maintainers.all()):
@@ -50,7 +51,10 @@ def register_or_upload(request):
 
     release, created = Release.objects.get_or_create(package=package,
                                                      version=version)
-
+    if created:
+        log.debug('distutils - register_or_upload - Created release: %s' % version)
+    else:
+        log.debug('distutils - register_or_upload - Found release: %s' % version)
     if (('classifiers' in request.POST or 'download_url' in request.POST) and
             metadata_version == '1.0'):
         metadata_version = '1.1'
@@ -102,7 +106,6 @@ def register_or_upload(request):
     except Exception as e:
         log.exception('Failure when storing upload')
         log.exception(e.msg)
-        print e
         return HttpResponseServerError('Failure when storing upload')
 
     return HttpResponse('upload accepted')
