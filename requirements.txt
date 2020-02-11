@@ -1,4 +1,4 @@
-django==1.7.10
+django==1.11.28
 django-suit==0.2.14
 django-analytical==0.20.0
 django-extensions==1.5.2
